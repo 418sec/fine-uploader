@@ -451,6 +451,9 @@ var qq = function(element) {
                 qq.extend(first[prop], val, true);
             }
             else {
+                // Fix *prototytpe pollution* in *recursive way*
+                if (prop === '__proto__' || prop === 'constructor' || prop === 'prototype')
+            	    return first;
                 first[prop] = val;
             }
         });
