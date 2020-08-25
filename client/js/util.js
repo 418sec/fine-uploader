@@ -445,9 +445,8 @@ var qq = function(element) {
     qq.extend = function(first, second, extendNested) {
         var key = String(Object.keys(second));
 
-        if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+        if (key.includes('__proto__') || key.includes('constructor') || key.includes('prototype')) 
             return first;
-        }
 
         qq.each(second, function(prop, val) {
             if (extendNested && qq.isObject(val)) {
